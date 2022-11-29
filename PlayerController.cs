@@ -8,9 +8,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed = 5f;
     float deltaRotation = 30f;
     float deltaMovement = 7f;
-    
+
     void FixedUpdate()
     {
+        
         // Vector3 movementInput = Vector3.zero;
 
         // if(Input.GetKey(KeyCode.W))
@@ -35,6 +36,8 @@ public class PlayerController : MonoBehaviour
         // Move(movementInput);
         Movement();
         Rotate();
+
+        
     }
 
     // void Move(Vector3 direction)
