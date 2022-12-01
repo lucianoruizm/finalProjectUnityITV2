@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed = 5f;
     float deltaRotation = 30f;
     float deltaMovement = 7f;
+    public bool gameOver;
 
     void FixedUpdate()
     {
@@ -66,6 +67,18 @@ public class PlayerController : MonoBehaviour
         else if(Input.GetKey(KeyCode.S))
         {
             transform.Translate(Vector3.back * deltaMovement * Time.deltaTime);
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Game Over");
+            gameOver = true;
+
+            gameObject.SetActive(false);
+            GameOverManager.gameOverManager.CallGameOver();
         }
     }
 }
