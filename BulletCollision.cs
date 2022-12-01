@@ -12,20 +12,14 @@ public class BulletCollision : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.CompareTag("Enemy"))
-        {   
-            enemyHealth++;
-            Debug.Log(enemyHealth);
-            Destroy(gameObject, 2.0f);
+        {
+            Instantiate(explotion, other.gameObject.transform.position, other.gameObject.transform.rotation);
 
-            if (enemyHealth == 3)
-            {
-              Instantiate(explotion, other.gameObject.transform.position, other.gameObject.transform.rotation);
-  
-              asExplotionSound.PlayOneShot(explotionSound);
-              
-              Destroy(other.gameObject);
-            }
+            asExplotionSound.PlayOneShot(explotionSound);
             
+            Destroy(other.gameObject);
+
+            Destroy(gameObject, 2.0f);
         }
     }
 
