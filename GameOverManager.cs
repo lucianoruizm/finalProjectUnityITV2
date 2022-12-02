@@ -7,17 +7,11 @@ public class GameOverManager : MonoBehaviour
 {
     public GameObject GameOver;
     public static GameOverManager gameOverManager;
-    // Start is called before the first frame update
+
     void Start()
     {
         gameOverManager = this;
         GameOver.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void CallGameOver()
