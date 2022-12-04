@@ -9,13 +9,14 @@ public class EnemyBehaviour : MonoBehaviour
     bool alertState;
     public Transform p1;
     public float speed;
-    // Start is called before the first frame update
+    public static EnemyBehaviour enemyBehaviour;
+    public int health;
+
     void Start()
     {
-        
+        enemyBehaviour = this;
     }
 
-    // Update is called once per frame
     void Update()
     {
        alertState = Physics.CheckSphere(transform.position,alertRange,playerLayer);
@@ -27,14 +28,27 @@ public class EnemyBehaviour : MonoBehaviour
        }
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.CompareTag("Projectile"))
+        {
+            health -= 1;
+            Debug.Log(health);
+            if(health == 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
     // Con la siguiente función se dibuja una esfera del tamaño de la esfera
     // creada con alertRange, de esta forma se visualiza el rango que tiene esta esfera
-    private void OnDrawGizmos() 
-    {
-        //Esto le da color la esfera, puede servir en caso de tener
-        //una gran cantidad de enemigo con deferentes rangos de alerta
-        Gizmos.color = Color.yellow;
-        //Dibuja la esfera
-        Gizmos.DrawWireSphere(transform.position, alertRange);    
-    }
+    // private void OnDrawGizmos() 
+    // {
+    //     //Esto le da color la esfera, puede servir en caso de tener
+    //     //una gran cantidad de enemigo con deferentes rangos de alerta
+    //     Gizmos.color = Color.yellow;
+    //     //Dibuja la esfera
+    //     Gizmos.DrawWireSphere(transform.position, alertRange);    
+    // }
 }

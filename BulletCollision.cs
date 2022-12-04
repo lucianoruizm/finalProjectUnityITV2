@@ -8,6 +8,7 @@ public class BulletCollision : MonoBehaviour
     [SerializeField] AudioSource asExplotionSound;
     [SerializeField] AudioClip explotionSound;
     [SerializeField] int damageAmmount = 10;
+    [SerializeField] int damageAmmountBoss = 20;
     GameObject gameManager;
     GameController gameController;
 
@@ -23,18 +24,23 @@ public class BulletCollision : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other)
-    {
-        
+    {   
         if(other.gameObject.CompareTag("Enemy"))
         {
             gameController.ScoreUp(damageAmmount);
+            Instantiate(explotion, other.gameObject.transform.position, other.gameObject.transform.rotation);
+            asExplotionSound.PlayOneShot(explotionSound);
+
+            Destroy(gameObject, 2.0f);
+        }
+
+        else if(other.gameObject.CompareTag("EnemyBoss"))
+        {
+            gameController.ScoreUp(damageAmmountBoss);
 
             Instantiate(explotion, other.gameObject.transform.position, other.gameObject.transform.rotation);
-
             asExplotionSound.PlayOneShot(explotionSound);
-            
-            Destroy(other.gameObject);
-
+        
             Destroy(gameObject, 2.0f);
         }
     }

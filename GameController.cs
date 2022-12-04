@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
     {
         _score += score;
         
-        if(_score == 50)
+        if(_score == 100)
         {
             Debug.Log("You Win");
             youWin = true;
