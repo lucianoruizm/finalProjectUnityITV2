@@ -43,12 +43,12 @@ public class EnemyBehaviour : MonoBehaviour
 
     // Con la siguiente función se dibuja una esfera del tamaño de la esfera
     // creada con alertRange, de esta forma se visualiza el rango que tiene esta esfera
-    // private void OnDrawGizmos() 
-    // {
-    //     //Esto le da color la esfera, puede servir en caso de tener
-    //     //una gran cantidad de enemigo con deferentes rangos de alerta
-    //     Gizmos.color = Color.yellow;
-    //     //Dibuja la esfera
-    //     Gizmos.DrawWireSphere(transform.position, alertRange);    
-    // }
+    private void OnDrawGizmos() 
+    {
+        //Esto le da color la esfera, puede servir en caso de tener
+        //una gran cantidad de enemigo con deferentes rangos de alerta
+        Gizmos.color = Color.yellow;
+        //Dibuja la esfera
+        Gizmos.DrawWireSphere(transform.position, alertRange);    
+    }
 }

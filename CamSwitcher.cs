@@ -13,6 +13,7 @@ public class CamSwitcher : MonoBehaviour
       if(other.CompareTag("Player"))
       {
         activeCam.Priority = 1;
+        Debug.Log("camera 1 active");
       }
    }
 
@@ -21,6 +22,7 @@ public class CamSwitcher : MonoBehaviour
       if(other.CompareTag("Player"))
       {
         activeCam.Priority = 0;
+        Debug.Log("camera 1 desactived");
       }
    }
 
